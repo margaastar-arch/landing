@@ -1,0 +1,79 @@
+<h2>Как должен работать квиз?</h2>
+<p class="subtitle">Три разных подхода к подаче вопросов</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="wizard" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0e1f5a;border-radius:12px;padding:20px;font-family:sans-serif;color:#fff">
+        <div style="font-size:11px;color:#7a9ec0;margin-bottom:10px;letter-spacing:.08em">ВОПРОС 2 ИЗ 5</div>
+        <div style="height:3px;background:#091440;border-radius:2px;margin-bottom:16px">
+          <div style="width:40%;height:100%;background:#a8dc4a;border-radius:2px"></div>
+        </div>
+        <div style="font-size:15px;font-weight:700;margin-bottom:14px">Сколько часов в неделю ты отвечаешь на однотипные вопросы клиентов?</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:10px 14px;font-size:13px">До 2 часов</div>
+          <div style="background:rgba(168,220,74,0.15);border:1px solid rgba(168,220,74,0.45);border-radius:8px;padding:10px 14px;font-size:13px;color:#a8dc4a">3–5 часов ✓</div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:10px 14px;font-size:13px">Больше 5 часов</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Шаг за шагом</h3>
+      <p>Один вопрос на весь экран. Прогресс-бар сверху. Выбрал ответ — автоматически переходит дальше. Максимальный фокус.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="scroll" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0e1f5a;border-radius:12px;padding:20px;font-family:sans-serif;color:#fff">
+        <div style="font-size:13px;font-weight:700;margin-bottom:10px">Быстрый расчёт</div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:11px;color:#7a9ec0;margin-bottom:5px">Какую роль ты занимаешь?</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <div style="background:rgba(0,200,240,0.18);border:1px solid rgba(0,200,240,0.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#00c8f0">Предприниматель ✓</div>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:4px 10px;font-size:11px">Фрилансер</div>
+          </div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:11px;color:#7a9ec0;margin-bottom:5px">Сколько часов на рутину?</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:4px 10px;font-size:11px">До 5 ч</div>
+            <div style="background:rgba(0,200,240,0.18);border:1px solid rgba(0,200,240,0.4);border-radius:20px;padding:4px 10px;font-size:11px;color:#00c8f0">5–10 ч ✓</div>
+          </div>
+        </div>
+        <div style="background:#a8dc4a;color:#0a1a04;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;text-align:center;margin-top:4px">Рассчитать →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Всё на одной странице</h3>
+      <p>Все 5 вопросов видны сразу в виде компактных чипов. Ответил на всё — нажал кнопку. Быстро, без переходов.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#0e1f5a;border-radius:12px;padding:20px;font-family:sans-serif;color:#fff">
+        <div style="display:flex;gap:8px;margin-bottom:12px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#a8dc4a;display:flex;align-items:center;justify-content:center;color:#0a1a04;font-size:11px;font-weight:700">1</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:#a8dc4a;display:flex;align-items:center;justify-content:center;color:#0a1a04;font-size:11px;font-weight:700">2</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(168,220,74,0.25);border:1px solid rgba(168,220,74,0.5);display:flex;align-items:center;justify-content:center;color:#a8dc4a;font-size:11px;font-weight:700">3</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#7a9ec0;font-size:11px">4</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;color:#7a9ec0;font-size:11px">5</div>
+        </div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:12px">Сколько человек у тебя в команде?</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px;font-size:12px;text-align:center">Работаю один</div>
+          <div style="background:rgba(168,220,74,0.15);border:1px solid rgba(168,220,74,0.45);border-radius:8px;padding:8px;font-size:12px;text-align:center;color:#a8dc4a">2–5 чел. ✓</div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px;font-size:12px;text-align:center">6–10 чел.</div>
+          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px;font-size:12px;text-align:center">10+ чел.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Пошагово + точки прогресса</h3>
+      <p>Один вопрос на экране, но вместо прогресс-бара — кружки-шаги. Видно общее число вопросов и где ты находишься. Чуть теплее и нагляднее A.</p>
+    </div>
+  </div>
+
+</div>

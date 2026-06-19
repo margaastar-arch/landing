@@ -1,0 +1,91 @@
+<h2>Как выглядит экран результата?</h2>
+<p class="subtitle">После ответов на 8 вопросов — что видит пользователь</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="dashboard" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#060d28;border-radius:12px;padding:18px;font-family:sans-serif;color:#fff;font-size:12px">
+        <div style="text-align:center;margin-bottom:14px">
+          <div style="font-size:10px;color:#a8dc4a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px">Твой результат</div>
+          <div style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff 20%,#a8dc4a 60%,#00c8f0 90%);-webkit-background-clip:text;-webkit-text-fill-color:transparent">18 часов</div>
+          <div style="color:#7a9ec0;font-size:11px">теряешь каждую неделю</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+          <div style="background:rgba(168,220,74,0.1);border:1px solid rgba(168,220,74,0.25);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-size:18px;font-weight:800;color:#a8dc4a">936 ч</div>
+            <div style="font-size:10px;color:#7a9ec0">в год</div>
+          </div>
+          <div style="background:rgba(0,200,240,0.1);border:1px solid rgba(0,200,240,0.25);border-radius:8px;padding:10px;text-align:center">
+            <div style="font-size:18px;font-weight:800;color:#00c8f0">≈ 2,8 млн</div>
+            <div style="font-size:10px;color:#7a9ec0">рублей в год</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:10px;margin-bottom:10px">
+          <div style="font-size:10px;color:#7a9ec0;margin-bottom:6px">Топ задачи для автоматизации:</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;justify-content:space-between"><span>📧 Клиентская переписка</span><span style="color:#a8dc4a">6 ч/нед</span></div>
+            <div style="display:flex;justify-content:space-between"><span>📱 Контент соцсетей</span><span style="color:#a8dc4a">5 ч/нед</span></div>
+            <div style="display:flex;justify-content:space-between"><span>📊 Отчёты и документы</span><span style="color:#a8dc4a">4 ч/нед</span></div>
+          </div>
+        </div>
+        <div style="background:#a8dc4a;color:#0a1a04;border-radius:8px;padding:8px;text-align:center;font-weight:700;font-size:11px">Получить план освобождения →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Дашборд с цифрами</h3>
+      <p>Главная цифра крупно, рядом — деньги и часы в год. Ниже таблица топ-задач. Чётко, конкретно, по-деловому.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="story" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#060d28;border-radius:12px;padding:18px;font-family:sans-serif;color:#fff;font-size:12px">
+        <div style="font-size:10px;color:#a8dc4a;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Картина твоей недели</div>
+        <div style="font-size:14px;font-weight:700;line-height:1.5;margin-bottom:12px">
+          Каждую неделю ты отдаёшь <span style="color:#a8dc4a">18 часов</span> задачам, которые не двигают твой бизнес вперёд.
+        </div>
+        <div style="color:#7a9ec0;font-size:11px;line-height:1.6;margin-bottom:12px">
+          За год это <span style="color:#fff">936 часов</span> — почти <span style="color:#fff">4 месяца</span> рабочего времени. При твоей ставке — <span style="color:#00c8f0">около 2,8 млн рублей</span>, которые уходят не на развитие, а на рутину.
+        </div>
+        <div style="background:rgba(168,220,74,0.08);border-left:3px solid #a8dc4a;border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:12px;font-size:11px;color:#7a9ec0;line-height:1.5">
+          Ты сказала, что хочешь больше времени на семью. С ИИ-автоматизацией клиентской переписки и контента ты вернёшь минимум <span style="color:#a8dc4a">10–12 часов</span> уже в первый месяц.
+        </div>
+        <div style="background:#a8dc4a;color:#0a1a04;border-radius:8px;padding:8px;text-align:center;font-weight:700;font-size:11px">Хочу эти часы обратно →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — История, а не цифры</h3>
+      <p>Нарратив от первого лица. Цифры вшиты в текст, а не в таблицу. Личный ответ про семью/цели — тоже там. Тепло, как разговор.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div style="background:#060d28;border-radius:12px;padding:18px;font-family:sans-serif;color:#fff;font-size:12px">
+        <div style="font-size:32px;font-weight:800;background:linear-gradient(135deg,#fff,#a8dc4a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:2px">18 часов/нед</div>
+        <div style="font-size:11px;color:#7a9ec0;margin-bottom:12px">≈ 2,8 млн рублей в год уходит на рутину</div>
+        <div style="background:rgba(168,220,74,0.08);border-left:3px solid #a8dc4a;border-radius:0 8px 8px 0;padding:10px 12px;margin-bottom:10px;font-size:11px;color:#c0d8a0;line-height:1.5">
+          Ты хочешь больше времени на семью — ИИ освободит его через автоматизацию переписки и контента.
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:10px;color:#7a9ec0;margin-bottom:5px">С чего начать:</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between">
+              <span>📧 Шаблоны ответов клиентам</span><span style="color:#a8dc4a">−6 ч</span>
+            </div>
+            <div style="background:rgba(255,255,255,0.04);border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between">
+              <span>📱 Автопостинг контента</span><span style="color:#a8dc4a">−5 ч</span>
+            </div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,#8fcc20,#00b8e0);color:#0a1a04;border-radius:8px;padding:8px;text-align:center;font-weight:700;font-size:11px">Получить мой план →</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Гибрид: число + история + план</h3>
+      <p>Большая цифра сразу бьёт в глаза. Под ней — персональная фраза про цель. Ниже — топ-2 конкретных шага. Баланс данных и тепла.</p>
+    </div>
+  </div>
+
+</div>
