@@ -163,6 +163,130 @@
       transition: opacity 200ms ease;
     }
     .btn-next:disabled { opacity: 0.35; cursor: default; }
+    /* === RESULT === */
+    .result-wrap {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      padding: 32px 28px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .result-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 16px;
+    }
+    .result-top-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .result-top-text {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #fff;
+      max-width: 320px;
+      margin-top: 20px;
+    }
+    .result-big-num {
+      flex-shrink: 0;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .result-big-digit {
+      font-size: 70px;
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #ffffff 20%, #a8dc4a 60%, #00c8f0 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .result-big-unit {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--lime);
+      margin-left: 4px;
+    }
+    .result-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      margin-bottom: 22px;
+    }
+    .result-stats-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .result-stat-num {
+      font-size: 35px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .result-stat-num.cyan { color: var(--cyan); }
+    .result-stat-num.lime { color: var(--lime); }
+    .result-stat-unit {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .result-stat-sub {
+      font-size: 16px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .result-stat-right { text-align: right; }
+    .result-stat-emphasis { color: #fff; font-weight: 600; }
+    .result-green-block {
+      background: rgba(168,220,74,0.07);
+      border-left: 3px solid var(--lime);
+      border-radius: 0 10px 10px 0;
+      padding: 16px 18px;
+      margin-bottom: 26px;
+    }
+    .result-personal-text {
+      font-size: 16px;
+      color: var(--text-dim2);
+      line-height: 1.6;
+    }
+    .btn-cta-result {
+      display: block;
+      background: var(--btn-grad);
+      color: #0a1a04;
+      border: none;
+      border-radius: 12px;
+      padding: 14px 18px;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .btn-cta-result:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,200,240,0.25);
+    }
+    .btn-restart {
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 16px;
+      align-self: center;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   </style>
 </head>
 <body>
@@ -180,7 +304,35 @@
       <div class="question-wrap" id="question-wrap"></div>
     </div>
   </div>
-  <div id="state-result" class="state"></div>
+  <div id="state-result" class="state">
+    <div class="result-wrap">
+      <div class="result-label">Картина твоей недели</div>
+      <div class="result-top-row">
+        <div class="result-top-text">каждую неделю ты отдаёшь задачам,<br>которые не двигают твой бизнес вперёд</div>
+        <div class="result-big-num">
+          <span class="result-big-digit" id="result-hours-week">18</span><span class="result-big-unit">часов</span>
+        </div>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-stats-row">
+        <div class="result-stat-left">
+          <div class="result-stat-num cyan"><span id="result-hours-year">936</span> <span class="result-stat-unit">часов</span></div>
+          <div class="result-stat-sub">в год — почти <span class="result-stat-emphasis">4 месяца</span></div>
+        </div>
+        <div class="result-stat-right">
+          <div class="result-stat-num lime" id="result-money-display">2,8 млн. руб</div>
+          <div class="result-stat-sub">уходит не на рост</div>
+        </div>
+      </div>
+      <div class="result-green-block">
+        <div class="result-personal-text" id="result-personal-text">
+          Ты хочешь больше времени на семью. С автоматизацией переписки ты вернёшь минимум <span style="color:#a8dc4a;font-weight:600">10–12 часов</span> уже в первый месяц.
+        </div>
+      </div>
+      <a class="btn-cta-result" href="https://t.me/MargaAstBrief_bot" target="_blank" rel="noopener">Хочу эти часы обратно →</a>
+      <button class="btn-restart" onclick="resetQuiz()">Пройти ещё раз</button>
+    </div>
+  </div>
   <script>
     const QUESTIONS = [
   {
@@ -427,9 +579,19 @@
       return `${desire}. С ${auto} ты вернёшь минимум <span style="color:#a8dc4a;font-weight:600">${recovered.min}–${recovered.max} часов</span> уже в первый месяц.`;
     }
 
-    // showResult will be implemented in Task 7
     function showResult() {
-      console.log('Quiz complete. Answers:', JSON.stringify(quizState.answers));
+      const a = quizState.answers;
+      const hours = calcHours(a);
+      const rate = a.rate ?? 2000;
+      const money = calcMoneyPerYear(hours, rate);
+      const recovered = calcRecovered(hours);
+      const hoursYear = hours * 52;
+
+      document.getElementById('result-hours-week').textContent = hours;
+      document.getElementById('result-hours-year').textContent = hoursYear;
+      document.getElementById('result-money-display').textContent = formatMoney(money) + ' руб';
+      document.getElementById('result-personal-text').innerHTML = buildPersonalText(a, recovered);
+
       transitionTo('state-result');
     }
   </script>
