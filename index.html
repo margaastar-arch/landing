@@ -287,6 +287,23 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
+    /* === MOBILE === */
+    @media (max-width: 480px) {
+      .hero-wrap { padding: 32px 16px; }
+      .quiz-wrap { padding: 32px 16px 28px; }
+      .opt-btn { width: 100%; }
+      .result-wrap { padding: 24px 16px; }
+      .result-top-row {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+      .result-big-num { text-align: left; }
+      .result-big-digit { font-size: 56px; }
+      .result-big-unit  { font-size: 22px; }
+      .result-top-text  { margin-top: 12px; max-width: 100%; }
+      .result-stat-num  { font-size: 28px; }
+      .btn-cta-result   { font-size: 17px; padding: 14px 12px; }
+    }
   </style>
 </head>
 <body>
