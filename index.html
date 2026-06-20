@@ -275,6 +275,14 @@
   }
 ];
 
+    // === STATE ===
+    const quizState = {
+      currentQ: 0,
+      answers: {},
+      multiSelected: new Set()
+    };
+
+    // === TRANSITIONS ===
     function transitionTo(id) {
       document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
@@ -282,7 +290,102 @@
     }
 
     function startQuiz() {
+      quizState.currentQ = 0;
+      quizState.answers  = {};
+      quizState.multiSelected = new Set();
+      renderQuestion();
       transitionTo('state-quiz');
+    }
+
+    function resetQuiz() {
+      transitionTo('state-hero');
+    }
+
+    // === QUIZ ENGINE ===
+    function renderDots() {
+      document.getElementById('progress-dots').innerHTML =
+        QUESTIONS.map((_, i) =>
+          `<span class="dot ${i === quizState.currentQ ? 'active' : i < quizState.currentQ ? 'done' : ''}"></span>`
+        ).join('');
+    }
+
+    function renderQuestion() {
+      const q    = QUESTIONS[quizState.currentQ];
+      const wrap = document.getElementById('question-wrap');
+      renderDots();
+
+      if (q.type === 'multi') {
+        quizState.multiSelected = new Set();
+        wrap.innerHTML = `
+          <div class="question-text">${q.text}</div>
+          <div class="hint">Можно выбрать несколько</div>
+          <div class="options">
+            ${q.options.map((opt, i) => `
+              <button class="opt-btn" data-idx="${i}" onclick="toggleMulti(this,${i})">${opt.label}</button>
+            `).join('')}
+          </div>
+          <button class="btn-next" id="btn-next" onclick="submitMulti()" disabled>Далее →</button>
+        `;
+      } else {
+        wrap.innerHTML = `
+          <div class="question-text">${q.text}</div>
+          <div class="options">
+            ${q.options.map((opt, i) => `
+              <button class="opt-btn" onclick="selectAnswer(${i})">${opt.label}</button>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    function selectAnswer(idx) {
+      const q = QUESTIONS[quizState.currentQ];
+      quizState.answers[q.key] = q.options[idx].value;
+      advanceQuiz();
+    }
+
+    function toggleMulti(btn, idx) {
+      if (quizState.multiSelected.has(idx)) {
+        quizState.multiSelected.delete(idx);
+        btn.classList.remove('selected');
+      } else {
+        quizState.multiSelected.add(idx);
+        btn.classList.add('selected');
+      }
+      document.getElementById('btn-next').disabled = quizState.multiSelected.size === 0;
+    }
+
+    function submitMulti() {
+      const q = QUESTIONS[quizState.currentQ];
+      quizState.answers[q.key] = [...quizState.multiSelected].map(i => q.options[i].value);
+      advanceQuiz();
+    }
+
+    function advanceQuiz() {
+      if (quizState.currentQ < QUESTIONS.length - 1) {
+        slideToNext();
+      } else {
+        showResult();
+      }
+    }
+
+    function slideToNext() {
+      const wrap = document.getElementById('question-wrap');
+      wrap.classList.add('slide-out');
+      setTimeout(() => {
+        quizState.currentQ++;
+        wrap.classList.remove('slide-out');
+        renderQuestion();
+        wrap.classList.add('slide-in');
+        void wrap.offsetWidth;           // force reflow so browser sees slide-in position
+        wrap.classList.remove('slide-in'); // triggers CSS transition back to default (0, opacity 1)
+      }, 280);
+    }
+
+    // showResult will be implemented in Task 7
+    function showResult() {
+      console.log('Quiz complete. Answers:', JSON.stringify(quizState.answers));
+      transitionTo('state-result');
     }
   </script>
 </body>
