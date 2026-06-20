@@ -187,6 +187,7 @@
     key: 'workHours',
     text: 'Сколько часов в неделю ты работаешь?',
     type: 'single',
+    // Context only — value: null means this question is not included in calcHours() sum
     options: [
       { label: 'До 30 часов',      value: null },
       { label: '30–40 часов',      value: null },
