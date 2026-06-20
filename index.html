@@ -32,14 +32,79 @@
       animation: fadeIn 400ms ease;
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    /* === HERO === */
+    .hero-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex: 1;
+      padding: 48px 24px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(28px, 6vw, 44px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-dim);
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+    .btn-cta-hero {
+      background: var(--btn-grad);
+      color: #0a1a04;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 40px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: transform 150ms ease, box-shadow 150ms ease;
+    }
+    .btn-cta-hero:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,200,240,0.25);
+    }
   </style>
 </head>
 <body>
-  <div id="state-hero" class="state active"></div>
+  <div id="state-hero" class="state active">
+    <div class="hero-wrap">
+      <div class="hero-label">Калькулятор освобождения времени</div>
+      <h1 class="hero-title">Сколько часов ты<br>теряешь каждую неделю?</h1>
+      <p class="hero-sub">2 минуты — и ты узнаешь точную цифру</p>
+      <button class="btn-cta-hero" onclick="startQuiz()">Узнать →</button>
+    </div>
+  </div>
   <div id="state-quiz" class="state"></div>
   <div id="state-result" class="state"></div>
   <script>
-    // JS — added in later tasks
+    function transitionTo(id) {
+      document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    function startQuiz() {
+      transitionTo('state-quiz');
+    }
   </script>
 </body>
 </html>
