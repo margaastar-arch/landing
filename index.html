@@ -382,6 +382,51 @@
       }, 280);
     }
 
+    function calcHours(answers) {
+      return (answers.messaging ?? 0) + (answers.content ?? 0) + (answers.admin ?? 0) + (answers.switching ?? 0);
+    }
+
+    function calcMoneyPerYear(hours, rate) {
+      return hours * rate * 52;
+    }
+
+    function formatMoney(amount) {
+      if (amount >= 1000000) {
+        const val = (amount / 1000000).toFixed(1).replace('.', ',');
+        return val.replace(',0', '') + ' млн';
+      }
+      return Math.round(amount / 1000) + ' тыс.';
+    }
+
+    function calcRecovered(hours) {
+      return { min: Math.max(1, Math.floor(hours * 0.55)), max: Math.max(2, Math.floor(hours * 0.65)) };
+    }
+
+    const DESIRE_TEXT = {
+      clients: 'Ты хочешь масштабировать клиентскую базу',
+      product:  'Ты хочешь запустить новый продукт',
+      family:   'Ты хочешь больше времени на себя и близких',
+      growth:   'Ты хочешь инвестировать в своё развитие'
+    };
+
+    const PAIN_AUTOMATION = {
+      weekends: 'автоматизацией рутины и планирования',
+      growth:   'автоматизацией операционных задач',
+      clients:  'автоматизацией переписки и работы с клиентами',
+      burnout:  'автоматизацией повторяющихся задач',
+      prices:   'автоматизацией административных процессов'
+    };
+
+    const PAIN_PRIORITY = ['clients', 'weekends', 'burnout', 'growth', 'prices'];
+
+    function buildPersonalText(answers, recovered) {
+      const desire = DESIRE_TEXT[answers.desire] ?? 'Ты хочешь освободить время';
+      const painList = Array.isArray(answers.pain) ? answers.pain : [];
+      const topPain = PAIN_PRIORITY.find(p => painList.includes(p)) ?? painList[0] ?? 'weekends';
+      const auto = PAIN_AUTOMATION[topPain] ?? 'автоматизацией рутины';
+      return `${desire}. С ${auto} ты вернёшь минимум <span style="color:#a8dc4a;font-weight:600">${recovered.min}–${recovered.max} часов</span> уже в первый месяц.`;
+    }
+
     // showResult will be implemented in Task 7
     function showResult() {
       console.log('Quiz complete. Answers:', JSON.stringify(quizState.answers));
